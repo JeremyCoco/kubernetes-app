@@ -1,0 +1,61 @@
+{{template "base" .}}
+
+{{define "title"}}Create an account{{end}}
+{{define "meta"}}
+<meta name="description" content="Create an account to start managing your todos" />
+{{end}}
+
+{{define "styles"}}
+<link rel="stylesheet" href="/static/css/pages/forms.css" />
+{{end}}
+
+{{define "content"}}
+<section class="content">
+    <p class="content__introduction">Signup to start creating your todos</p>
+
+    <form
+        action="/auth/register"
+        method="post"
+        class="form signup-form"
+        autocomplete="off"
+    >
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}" />
+        {{with .Form}}
+        <div class="form__group">
+            <label for="username" class="form__label">Username</label>
+            <input
+                type="text"
+                class="form__input {{if .Errors.Get "username"}}form__input--error animate__animated animate__headShake{{end}}"
+                name="username"
+                id="username"
+                placeholder="Enter a username"
+                value="{{.Get "username"}}"
+                required
+            />
+            {{with .Errors.Get "username"}}
+            <p class="form__error">{{.}}</p>
+            {{end}}
+        </div>
+
+        <div class="form__group">
+            <label for="password" class="form__label">Password</label>
+            <input
+                type="password"
+                class="form__input {{if .Errors.Get "password"}}form__input--error animate__animated animate__headShake{{end}}"
+                name="password"
+                id="password"
+                placeholder="Enter a password"
+                required
+            />
+            {{with .Errors.Get "password"}}
+            <p class="form__error">{{.}}</p>
+            {{end}}
+        </div>
+
+        <div class="form__group form__group--with-button">
+            <input class="form__button" type="submit" value="Signup" />
+        </div>
+        {{end}}
+    </form>
+</section>
+{{end}}

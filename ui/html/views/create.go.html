@@ -1,0 +1,104 @@
+{{template "base" .}}
+
+{{define "title"}}Create a todo{{end}}
+{{define "meta"}}
+<meta name="robots" content="noindex,nofollow" />
+{{end}}
+
+{{define "styles"}}
+<link rel="stylesheet" href="/static/css/pages/forms.css" />
+{{end}}
+
+{{define "content"}}
+<section class="section">
+    <p class="content__introduction">Let's create a todo :)</p>
+
+    <form
+        action="/todos/create"
+        method="post"
+        class="form create-form"
+        autocomplete="off"
+    >
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}" />
+        {{with .Form}}
+        <div class="form__group">
+            <label for="title" class="form__label">Title</label>
+            <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Your todo title"
+                class="form__input {{if .Errors.Get "title"}}form__input--error animate__animated animate__headShake{{end}}"
+                value="{{.Get "title"}}"
+                required
+            />
+
+            {{with .Errors.Get "title"}}
+            <p class="form__error">{{.}}</p>
+            {{end}}
+        </div>
+
+        <div class="form__group">
+            <label class="form__label form__label--inline">Expires in:</label>
+            {{with .Errors.Get "expires"}}
+            <p class="form__error form__error--inline">{{.}}</p>
+            {{end}}
+
+            <div class="form__inline-inputs">
+                <label for="days" class="form__inline-label form__inline">
+                    <input
+                        type="text"
+                        inputmode="numeric"
+                        name="days"
+                        id="days"
+                        placeholder="Days"
+                        class="form__input {{if .Errors.Get "days"}}form__input--error animate__animated animate__headShake{{end}}"
+                        value="{{or (.Get "days") 0}}"
+                        pattern="\d+"
+                        title="A number"
+                        required
+                    />
+                    Days
+                </label>
+
+                <label for="hours" class="form__inline-label form__inline">
+                    <input
+                        type="text"
+                        inputmode="numeric"
+                        name="hours"
+                        id="hours"
+                        placeholder="Hours"
+                        class="form__input {{if .Errors.Get "hours"}}form__input--error animate__animated animate__headShake{{end}}"
+                        value="{{or (.Get "hours") 0}}"
+                        pattern="\d+"
+                        title="A number"
+                        required
+                    />
+                    Hours
+                </label>
+
+                <label for="minutes" class="form__inline-label">
+                    <input
+                        type="text"
+                        inputmode="numeric"
+                        name="minutes"
+                        id="minutes"
+                        placeholder="Minutes"
+                        class="form__input {{if .Errors.Get "minutes"}}form__input--error animate__animated animate__headShake{{end}}"
+                        value="{{or (.Get "minutes") 0}}"
+                        pattern="\d+"
+                        title="A number"
+                        required
+                    />
+                    Minutes
+                </label>
+            </div>
+
+            <div class="form__group form__group--with-button">
+                <input class="form__button" type="submit" value="Create" />
+            </div>
+        </div>
+        {{end}}
+    </form>
+</section>
+{{end}}

@@ -1,0 +1,41 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content="Edwin Evenor Garcia Valle - Edwing123" />
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+        <meta name="theme-color" content="#1D1B1B" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <link rel="stylesheet" href="/static/css/shared.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+
+        {{block "styles" .}}{{end}}
+        <title>TodoApp | {{block "title" .}}{{end}}</title>
+        {{block "meta" .}}{{end}}
+    </head>
+    <body>
+        <div class="container">
+            {{template "header" .}}
+
+            <main class="main">
+                {{template "content" .}}
+            </main>
+
+            {{template "footer" .}}
+        </div>
+
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script type="module" src="https://cdn.skypack.dev/twind/shim"></script>
+    <script src="/static/js/main.js"></script>
+    </body>
+</html>
+{{end}}

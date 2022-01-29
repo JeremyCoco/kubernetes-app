@@ -1,0 +1,31 @@
+{{template "base" .}}
+
+{{define "title"}}Home{{end}}
+{{define "meta"}}
+<meta name="description" content="Manage your todos" />
+{{end}}
+
+{{define "styles"}}
+<link rel="stylesheet" href="/static/css/pages/home.css" />
+{{end}}
+
+{{define "content"}}
+<section class="content">
+    <p class="content__introduction">Simple todo app to make sure you’re always on</p>
+
+    {{if not .IsAuthenticated}}
+    <div class="cta-container">
+        <a href="/register" class="cta__button cta__button--green">Sign up</a>
+        <span class="cta__or-text">Or</span>
+        <a href="/login" class="cta__button cta__button--white-ish">Login</a>
+    </div>
+    {{else}}
+    <div class="actions-box">
+        <h2 class="actions-box__title">Let's Go {{.User.Username}}</h2>
+        <a href="/todos/list" class="actions-box__button" aria-label="Go to todos manager page" title="Go to todos manager page">
+            <svg class="actions-box__icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </a>
+    </div>
+    {{end}}
+</section>
+{{end}}

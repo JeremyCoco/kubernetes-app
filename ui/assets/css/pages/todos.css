@@ -1,0 +1,117 @@
+.create-todo-box {
+    margin: 0 0 var(--size-12);
+    text-align: center;
+}
+
+.create-todo-button {
+    display: inline-block;
+    padding: var(--size-3) var(--size-5);
+
+    border-radius: var(--radius-xs);
+    text-decoration: none;
+
+    font-weight: var(--font-bold);
+    font-size: var(--scale-1);
+    color: var(--white);
+    background-color: var(--green);
+}
+
+.create-todo-button:is(:active, :focus-visible) {
+    background-color: var(--color-green);
+    outline: none;
+}
+
+.message-box {
+    color: var(--semi-transparent-white-1);
+    text-align: center;
+}
+
+.message-box__title {
+    font-size: var(--scale-3);
+    margin-bottom: var(--size-4);
+    font-weight: var(--font-extrabold);
+}
+
+.message-box__icon {
+    width: 86px;
+    height: 86px;
+    transform: rotate(90deg);
+}
+
+.todos-item {
+    padding: var(--size-6) var(--size-5);
+    margin-bottom: var(--size-6);
+
+    background-color: var(--semi-transparent-white-1);
+    border-radius: var(--radius-xs);
+}
+
+
+.todo__title {
+    margin-bottom: var(--size-5);
+
+    text-align: center;
+    color: var(--white);
+    font-size: var(--scale-3);
+}
+
+.todo__dates {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: var(--size-4);
+}
+
+.todo__date {
+    display: flex;
+    padding: var(--size-2);
+
+    border-radius: var(--radius-xs);
+    color: var(--white);
+    background-color: var(--semi-transparent-white-1);
+    font-size: var(--scale-000);
+    margin-bottom: var(--size-5);
+}
+
+.todo__icon--clock {
+    width: var(--size-8);
+    margin-right: var(--size-2);
+}
+
+.todo-item--done {
+    color: var(--color-grey-500);
+    text-decoration: line-through;
+}
+
+.todo__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--size-4);
+}
+
+.todo__actions-form {
+    width: 50%;
+}
+
+.todo__button {
+    display: block;
+    width: 100%;
+    padding: var(--size-2) 0;
+
+    border: none;
+    border-radius: var(--radius-xs);
+    color: var(--white);
+    font-size: var(--scale-00);
+}
+
+.todo__button--complete {
+    background-color: var(--semi-transparent-white-1);
+}
+
+.todo__button--delete {
+    background-color: var(--red-600);
+}
+
+.todo__button:is(:active, :focus-visible) {
+    outline: none;
+}

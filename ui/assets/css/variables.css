@@ -1,0 +1,20 @@
+:root {
+    --blue: #482ff7;
+    --blue-100: #3821ca;
+
+    --purple: #685aae;
+    --purple-100: #2e1d57;
+
+    --green: #17b978;
+
+    --red: #fe5f55;
+    --red-600: #e77c7c;
+
+    --black: #1d1b1b;
+    --black-900: hsla(0, 4%, 11%, 0.24);
+
+    --white: #ffffff;
+    --white-100: hsla(0, 0%, 100%, 0.8);
+    --semi-transparent-white-1: hsla(0, 0%, 100%, 0.24);
+    --semi-transparent-white-2: hsla(0, 0%, 89%, 0.24);
+}

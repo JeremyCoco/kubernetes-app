@@ -1,0 +1,121 @@
+.content__introduction {
+    width: 60%;
+    margin: 0 auto var(--size-12);
+
+    text-align: center;
+    color: var(--white);
+    font-weight: var(--font-medium);
+    font-size: var(--scale-1);
+}
+
+.form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.form__group {
+    margin-bottom: var(--size-4);
+}
+
+.form__group--with-button {
+    text-align: center;
+    margin-top: var(--size-8);
+}
+
+.form__button {
+    padding: var(--size-3) var(--size-6);
+
+    font-weight: var(--font-bold);
+    font-size: var(--scale-1);
+    color: var(--white);
+
+    border: none;
+    border-radius: var(--radius-xs);
+    background-color: var(--blue);
+}
+
+.form__button:is(:focus-visible, :active) {
+    background-color: var(--blue-100);
+    outline: none;
+}
+
+.form__label {
+    display: inline-block;
+    margin-bottom: var(--size-1);
+
+    color: var(--white);
+    font-size: var(--scale-1);
+    font-weight: var(--font-bold);
+}
+
+.form__input {
+    display: block;
+    width: 100%;
+    padding: var(--size-3) var(--size-4);
+
+    font-family: inherit;
+    font-size: var(--scale-1);
+    color: var(--white);
+
+    background-color: var(--black-900);
+    border: none;
+    border-radius: var(--radius-xs);
+}
+
+.form__input::placeholder {
+    color: var(--purple);
+}
+
+.form__input:is(:focus-visible, :active) {
+    outline: none;
+}
+
+.form__input--error {
+    outline: var(--size-px) solid var(--red);
+}
+
+.form__error {
+    display: inline-block;
+    margin: var(--size-1) 0 0;
+
+    font-size: var(--scale-0);
+    color: var(--red);
+}
+
+.form__generic-error {
+    padding: var(--size-2);
+    margin-bottom: var(--size-5);
+
+    border-radius: var(--radius-xs);
+    background-color: var(--red);
+    text-align: center;
+    color: var(--white);
+    font-weight: var(--font-semibold);
+    font-size: var(--scale-0);
+}
+
+.form__inline-inputs {
+    display: flex;
+    gap: var(--size-2);
+
+    font-size: var(--scale-00);
+    font-weight: var(--font-bold);
+    text-align: center;
+    color: var(--white);
+}
+
+.form__inline-inputs input {
+    margin-bottom: var(--size-1);
+
+    text-align: center;
+    font-size: var(--scale-00);
+}
+
+.form__label--inline {
+    margin-bottom: var(--size-2);
+}
+
+.form__error--inline {
+    display: block;
+    margin-bottom: var(--size-2);
+}

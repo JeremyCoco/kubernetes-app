@@ -1,0 +1,22 @@
+.footer {
+    margin-bottom: var(--size-8);
+}
+
+.icons-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--size-6);
+}
+
+.icons-row__icon {
+    margin: 0 var(--size-3);
+    width: 40px;
+    color: var(--purple);
+}
+
+.footer__text {
+    font-weight: var(--font-bold);
+    text-align: center;
+    color: var(--purple);
+    font-size: var(--scale-0);
+}

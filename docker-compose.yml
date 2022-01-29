@@ -1,0 +1,39 @@
+version: '3'
+services:
+    db:
+        image: mysql:8.0.27
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_PASSWORD: root
+            MYSQL_DATABASE: todo
+        container_name: golang-docker-db
+        ports:
+            - 33066:3306
+        networks:
+            - backend
+
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 8181:8181
+        depends_on:
+            - db
+        container_name: golang-docker-web
+        networks:
+            - backend
+
+volumes:
+    db-data:
+        driver: local
+
+networks:
+    backend:
+
+
+
+
+
+
+

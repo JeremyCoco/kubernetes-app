@@ -1,0 +1,44 @@
+@import url("./reset.css");
+@import url("./libs/pollen.css");
+@import url("./libs/colors.css");
+@import url("./variables.css");
+@import url("./components/header.css");
+@import url("./components/footer.css");
+
+:root {
+    font-family: "Manrope", sans-serif;
+    line-height: var(--line-md);
+}
+
+body {
+    background: linear-gradient(to bottom, var(--blue), var(--purple-100));
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+
+    overflow: hidden;
+}
+
+.header {
+    grid-area: header;
+}
+
+.main {
+    grid-area: main;
+    margin-bottom: var(--size-10);
+
+}
+
+.footer {
+    grid-area: footer;
+}

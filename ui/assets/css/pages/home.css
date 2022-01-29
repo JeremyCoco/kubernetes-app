@@ -1,0 +1,82 @@
+.content {}
+
+.content__introduction {
+    width: 60%;
+    margin: 0 auto var(--size-12);
+
+    text-align: center;
+    color: var(--white);
+    font-weight: var(--font-medium);
+    font-size: var(--scale-1);
+}
+
+.actions-box__title {
+    margin-bottom: var(--size-5);
+
+    color: var(--white);
+    font-size: var(--scale-2);
+    text-align: center;
+}
+
+.actions-box__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 auto;
+    width: 90px;
+    height: 90px;
+
+    border-radius: var(--radius-xs);
+    background-color: var(--semi-transparent-white-1);
+    transition: all linear 100ms;
+}
+
+.actions-box__button:is(:active, :focus-visible) {
+    transform: scale(1.1);
+    outline: none;
+}
+
+.actions-box__icon {
+    width: 68%;
+    height: 68%;
+
+    color: var(--white-100);
+}
+
+.cta-container {
+    display: grid;
+    width: 150px;
+    margin: 0 auto;
+
+    font-size: var(--scale-1);
+    text-align: center;
+    font-weight: var(--font-extrabold);
+    color: var(--white);
+}
+
+
+.cta__button {
+    padding: var(--size-2) 0;
+
+    text-decoration: none;
+    border-radius: 80px;
+    color: inherit;
+    transition: 100ms all linear;
+}
+
+.cta__button:is(:active, :focus-visible) {
+    transform: scale(1.1);
+}
+
+.cta__button--green {
+    background-color: var(--green);
+}
+.cta__button--white-ish {
+    background-color: var(--semi-transparent-white-1);
+}
+
+.cta__or-text {
+    margin: var(--size-3) 0;
+    align-self: center;
+}

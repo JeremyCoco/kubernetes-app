@@ -1,0 +1,64 @@
+{{template "base" .}}
+
+{{define "title"}}Your todos{{end}}
+{{define "meta"}}
+<meta name="robots" content="noindex,nofollow" />
+{{end}}
+
+{{define "styles"}}
+<link rel="stylesheet" href="/static/css/pages/todos.css" />
+{{end}}
+
+
+{{define "content"}}
+<section class="content">
+    <div class="create-todo-box">
+        <a href="/todos/create" class="create-todo-button">Create A Todo</a>
+    </div>
+
+    {{$CSRFToken := .CSRFToken}}
+    {{range .Todos}}
+    <section class="todos-list">
+        <article class="todos-item">
+            <h2 class="todo__title {{if .Done}}todo-item--done{{end}}">{{.Title}}</h2>
+            <div class="todo__dates">
+                <p class="todo__date">
+                    <svg class="todo__icon--clock" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <time
+                        x-data="datetime"
+                        x-text="prettyDateTime()"
+                        datetime="{{.CreatedAt}}"></time>
+                </p>
+                <p class="todo__date">
+                    <svg class="todo__icon--clock" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <time
+                        x-data="datetime"
+                        x-text="prettyDateTime()"
+                        datetime="{{.Expires}}"></time>
+                </p>
+            </div>
+
+            <div class="todo__actions">
+                {{if not .Done}}
+                <form action="/todos/complete" method="post" class="todo__actions-form">
+                    <input type="hidden" name="csrf_token" value="{{$CSRFToken}}" />
+                    <input type="hidden" name="todo_id" value="{{.Id}}" />
+                    <input type="submit" class="todo__button todo__button--complete" value="Mark as complete" />
+                </form>
+                {{end}}
+                <form action="/todos/delete" method="post" class="todo__actions-form">
+                    <input type="hidden" name="csrf_token" value="{{$CSRFToken}}" />
+                    <input type="hidden" name="todo_id" value="{{.Id}}" />
+                    <input type="submit" class="todo__button todo__button--delete" value="Delete" />
+                </form>
+            </div>
+        </article>
+    </section>
+    {{else}}
+    <section class="message-box">
+        <h2 class="message-box__title">You got 0 todos <span aria-hidden="true">^.^</span></h2>
+        <svg class="message-box__icon" fill="none" aria-hidden="true" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+    </section>
+    {{end}}
+</section>
+{{end}}

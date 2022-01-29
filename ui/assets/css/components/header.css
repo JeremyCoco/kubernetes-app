@@ -1,0 +1,61 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    height: 55px;
+    padding: 0 var(--size-2);
+    margin: var(--size-4) 0 var(--size-10);
+
+    background-color: var(--semi-transparent-white-1);
+    border-radius: var(--radius-xs);
+}
+
+.header__title {
+    color: var(--white);
+    font-size: var(--scale-2);
+}
+
+.header__title > a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.logout-form {
+    height: 75%;
+    aspect-ratio: 1/1;
+    margin-right: var(--size-2);
+
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+}
+
+
+.logout-form__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    background-color: var(--black);
+    border-radius: var(--radius-xs);
+    border: none;
+    cursor: pointer;
+}
+
+.logout-form__button:is(:active, :focus-visible, :focus) {
+    background-color: var(--semi-transparent-white-2);
+    outline: none;
+}
+
+
+.logout-form__icon {
+    width: 65%;
+    height: 65%;
+    color: var(--red);
+}
