@@ -162,11 +162,13 @@ func (app *application) createTodo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	app.infoLogger.Printf("Creating new todo...")
 	form := forms.New(r.PostForm)
 	form.Required("title", "days", "hours", "minutes")
 	form.MaxLength("title", 255)
 	form.RequireTypeInt("days", "hours", "minutes")
 
+	app.infoLogger.Printf("Checking if inputs are correct...")
 	if !form.IsValid() {
 		shouldAddExpiresErr := false
 		for _, field := range []string{"days", "hours", "minutes"} {
@@ -190,6 +192,7 @@ func (app *application) createTodo(w http.ResponseWriter, r *http.Request) {
 
 	userID := app.sessionManager.GetInt(r.Context(), "userID")
 
+	app.infoLogger.Printf("Create creation time and expiry time...")
 	days, _ := strconv.Atoi(form.Get("days"))
 	hours, _ := strconv.Atoi(form.Get("hours"))
 	minutes, _ := strconv.Atoi(form.Get("minutes"))
@@ -198,6 +201,7 @@ func (app *application) createTodo(w http.ResponseWriter, r *http.Request) {
 	expires := createdAt.AddDate(0, 0, days)
 	expires = expires.Add((time.Hour * time.Duration(hours)) + (time.Minute * time.Duration(minutes)))
 
+	app.infoLogger.Printf("Create the todo struct with the data that will be inserted into the database...")
 	todo := models.Todo{
 		Title:     form.Get("title"),
 		CreatedAt: createdAt,
@@ -210,10 +214,12 @@ func (app *application) createTodo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	app.infoLogger.Printf("New todo created!")
 	http.Redirect(w, r, "/todos/list", http.StatusSeeOther)
 }
 
 func (app *application) completeTodo(w http.ResponseWriter, r *http.Request) {
+	app.infoLogger.Printf("Starting process of complete todo")
 	err := r.ParseForm()
 	if err != nil {
 		app.clientError(w, http.StatusBadRequest)
@@ -243,10 +249,12 @@ func (app *application) completeTodo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	app.infoLogger.Printf("Todo marked as done")
 	http.Redirect(w, r, "/todos/list", http.StatusSeeOther)
 }
 
 func (app *application) deleteTodo(w http.ResponseWriter, r *http.Request) {
+	app.infoLogger.Printf("Starting process of delete todo")
 	err := r.ParseForm()
 	if err != nil {
 		app.clientError(w, http.StatusBadRequest)
@@ -276,6 +284,7 @@ func (app *application) deleteTodo(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	app.infoLogger.Printf("Todo deleted")
 	http.Redirect(w, r, "/todos/list", http.StatusSeeOther)
 }
 

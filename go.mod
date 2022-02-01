@@ -4,8 +4,8 @@ go 1.17
 
 require (
 	github.com/alexedwards/scs/mysqlstore v0.0.0-20211203064041-370cc303b69f
+	github.com/alexedwards/scs/v2 v2.5.0
 	github.com/bmizerany/pat v0.0.0-20210406213842-e4b6760bdd6f
-	github.com/alexedwards/scs/v2 v2.5.0 // indirect
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/golang-migrate/migrate/v4 v4.15.1
 	github.com/justinas/alice v1.2.0

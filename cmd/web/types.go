@@ -7,6 +7,7 @@ import (
 	"github.com/JeremyCoco/kubernetes-app/pkg/forms"
 	"github.com/JeremyCoco/kubernetes-app/pkg/models"
 	"github.com/JeremyCoco/kubernetes-app/pkg/models/mysql"
+	"github.com/alexedwards/scs/v2"
 )
 
 type application struct {

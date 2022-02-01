@@ -7,7 +7,7 @@ import (
 )
 
 func getConfigFlags() (*configFlags, error) {
-	addr := flag.String("addr", "web:8181", "Set server netowrk address")
+	addr := flag.String("addr", ":8181", "Set server netowrk address")
 	dsn := flag.String("dsn", "root:root@tcp(db:3306)/todo", "Set database data source name")
 	flag.Parse()
 

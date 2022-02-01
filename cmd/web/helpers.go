@@ -72,6 +72,7 @@ func (app *application) clientError(w http.ResponseWriter, status int) {
 }
 
 func (app *application) notFound(w http.ResponseWriter, r *http.Request) {
+	app.infoLogger.Printf("Not found page")
 	http.NotFound(w, r)
 }
 
